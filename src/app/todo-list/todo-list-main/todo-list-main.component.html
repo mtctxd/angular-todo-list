@@ -1,18 +1,19 @@
-<div>
-  <ul>
-    <li *ngFor="let todo of todos">
+<div class="container">
+  <ul class="list">
+    <li *ngFor="let todo of todos" class="item">
       <input type="checkbox"
         name='{{ todo.id }}'
         id='{{ todo.id }}'
         [checked]='todo.completed'
         (change)="changeStatus(todo.id)"
+        class="checkbox"
       >
-      <span>
+      <span class="title">
         {{ todo.title }}
       </span>
       <button
         (click)="deleteTodo(todo.id)"
-      >X</button>
+      class="delete-button">X</button>
     </li>
   </ul>
 </div>

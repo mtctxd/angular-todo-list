@@ -1,0 +1,21 @@
+.container {}
+
+.list {
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 30px 1fr 30px;
+  place-items: center;
+}
+
+.chackbox {}
+
+.title {
+  place-self: center start;
+}
+
+.delete-button {
+}
