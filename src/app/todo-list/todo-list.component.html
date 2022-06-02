@@ -1,5 +1,7 @@
-<app-todo-list-header (addTodoEvent)="addTodo($event)"
-  (clearCompletedEvent)="clearCompleted()"></app-todo-list-header>
+<app-todo-list-header [completedStatus]="completedStatus"
+  (addTodoEvent)="addTodo($event)"
+  (toggleAllEvent)="toggleAll()"
+  (fetchTodosEvent)="fetchTodos()"></app-todo-list-header>
 <app-todo-list-main [todos]="todos"
   [filterType]="filterType"
   (deleteTodoEvent)="deleteTodo($event)"

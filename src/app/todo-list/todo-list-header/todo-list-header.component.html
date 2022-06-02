@@ -1,11 +1,17 @@
 <div>
-  <button
-    (click)="clearCompleted()"
-  >Clear Completed</button>
+  <input type="checkbox"
+    name="completedStatus"
+    id="completedStatus"
+    (click)="toggleAll()"
+    [checked]="completedStatus">
   <input type="text"
     [(ngModel)]="value"
     (keydown.enter)="addTodo()"
     placeholder="Enter your task"
-    #thisInput
+    #thisInput>
+    <button
+      (click)="fetchTodos()"
     >
+      fetch some todos
+    </button>
 </div>

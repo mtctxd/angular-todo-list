@@ -5,6 +5,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
+import { TodoListService } from '../services/todo-list/todo-list.service';
 import { Filter } from '../types/enums';
 import { Todo } from '../types/interfaces';
 
@@ -41,8 +42,9 @@ export class TodoListComponent implements OnInit {
     },
   ];
   filterType: Filter = Filter.All;
+  completedStatus: boolean = false;
 
-  constructor() {}
+  constructor(private todoListService: TodoListService) {}
 
   ngOnInit(): void {}
 
@@ -76,14 +78,23 @@ export class TodoListComponent implements OnInit {
 
   changeFilterType(type: Filter) {
     this.filterType = type;
-    console.log(this.filterType);
   }
 
-  clearCompleted() {
-    this.todos = this.todos.filter((todo) => !todo.completed);
+  toggleAll() {
+    this.completedStatus = !this.completedStatus;
+    this.todos = this.todos.map((todo) => ({
+      ...todo,
+      completed: this.completedStatus,
+    }));
   }
 
   clearAll() {
     this.todos = [];
+  }
+
+  fetchTodos() {
+    this.todoListService.getTodos().subscribe((res) => {
+      this.todos = [...this.todos, ...res];
+    });
   }
 }

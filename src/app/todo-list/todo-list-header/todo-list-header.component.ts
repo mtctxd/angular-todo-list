@@ -18,8 +18,10 @@ export class TodoListHeaderComponent implements OnInit, AfterViewInit {
   value = '';
 
   @ViewChild('thisInput') thisInput!: ElementRef;
+  @Input() completedStatus!: boolean;
   @Output() addTodoEvent = new EventEmitter<string>();
-  @Output() clearCompletedEvent = new EventEmitter<string>();
+  @Output() toggleAllEvent = new EventEmitter<string>();
+  @Output() fetchTodosEvent = new EventEmitter<string>();
 
   constructor() {}
 
@@ -30,11 +32,17 @@ export class TodoListHeaderComponent implements OnInit, AfterViewInit {
   }
 
   addTodo() {
-    this.addTodoEvent.emit(this.value);
+    if (this.value.length > 0) {
+      this.addTodoEvent.emit(this.value);
+    }
     this.value = '';
   }
 
-  clearCompleted() {
-    this.clearCompletedEvent.emit();
+  toggleAll() {
+    this.toggleAllEvent.emit();
+  }
+
+  fetchTodos() {
+    this.fetchTodosEvent.emit();
   }
 }
