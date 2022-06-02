@@ -19,6 +19,7 @@ export class TodoListHeaderComponent implements OnInit, AfterViewInit {
 
   @ViewChild('thisInput') thisInput!: ElementRef;
   @Output() addTodoEvent = new EventEmitter<string>();
+  @Output() clearCompletedEvent = new EventEmitter<string>();
 
   constructor() {}
 
@@ -31,5 +32,9 @@ export class TodoListHeaderComponent implements OnInit, AfterViewInit {
   addTodo() {
     this.addTodoEvent.emit(this.value);
     this.value = '';
+  }
+
+  clearCompleted() {
+    this.clearCompletedEvent.emit();
   }
 }

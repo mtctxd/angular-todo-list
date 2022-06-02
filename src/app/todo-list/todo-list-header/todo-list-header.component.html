@@ -1,5 +1,7 @@
 <div>
-  <button>Hide</button>
+  <button
+    (click)="clearCompleted()"
+  >Clear Completed</button>
   <input type="text"
     [(ngModel)]="value"
     (keydown.enter)="addTodo()"

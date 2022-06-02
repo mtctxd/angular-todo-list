@@ -4,9 +4,10 @@ import { TodoListComponent } from './todo-list.component';
 import { TodoListHeaderComponent } from './todo-list-header/todo-list-header.component';
 import { TodoListMainComponent } from './todo-list-main/todo-list-main.component';
 import { FormsModule } from '@angular/forms';
+import { TodoListFooterComponent } from './todo-list-footer/todo-list-footer.component';
 
 @NgModule({
-  declarations: [TodoListComponent, TodoListHeaderComponent, TodoListMainComponent],
+  declarations: [TodoListComponent, TodoListHeaderComponent, TodoListMainComponent, TodoListFooterComponent],
   imports: [CommonModule, FormsModule],
   exports: [TodoListComponent],
 })

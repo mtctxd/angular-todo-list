@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
+import { Filter } from '../types/enums';
 import { Todo } from '../types/interfaces';
 
 @Component({
@@ -33,6 +40,7 @@ export class TodoListComponent implements OnInit {
       completed: true,
     },
   ];
+  filterType: Filter = Filter.All;
 
   constructor() {}
 
@@ -44,9 +52,9 @@ export class TodoListComponent implements OnInit {
       userId: 1,
       title: event,
       completed: false,
-    }
+    };
 
-    this.todos.push(newTodo);
+    this.todos = [...this.todos, newTodo];
   }
 
   deleteTodo(id: number) {
@@ -54,15 +62,28 @@ export class TodoListComponent implements OnInit {
   }
 
   changeStatus(id: number) {
-    this.todos = this.todos.map(todo => {
+    this.todos = this.todos.map((todo) => {
       if (todo.id === id) {
         return {
           ...todo,
           completed: !todo.completed,
-        }
+        };
       }
 
       return todo;
-    })
+    });
+  }
+
+  changeFilterType(type: Filter) {
+    this.filterType = type;
+    console.log(this.filterType);
+  }
+
+  clearCompleted() {
+    this.todos = this.todos.filter((todo) => !todo.completed);
+  }
+
+  clearAll() {
+    this.todos = [];
   }
 }

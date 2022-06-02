@@ -1,0 +1,19 @@
+<div class="container">
+  <span>
+    {{ completedCount }} item{{ completedCount > 1 ? "'s" : ''}} left
+  </span>
+  <div class="filters">
+    <button class="button" (click)="changeFilter(filterTypes.All)">
+      All
+    </button>
+    <button class="button" (click)="changeFilter(filterTypes.Active)">
+      Active
+    </button>
+    <button class="button" (click)="changeFilter(filterTypes.Completed)">
+      completed
+    </button>
+  </div>
+  <button
+    (click)="clearAll()"
+  >clear all</button>
+</div>

@@ -1,6 +1,6 @@
 <div class="container">
   <ul class="list">
-    <li *ngFor="let todo of todos" class="item">
+    <li *ngFor="let todo of visibleTodos" class="item">
       <input type="checkbox"
         name='{{ todo.id }}'
         id='{{ todo.id }}'
