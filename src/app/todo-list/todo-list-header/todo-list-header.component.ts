@@ -1,16 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 
 @Component({
   selector: 'app-todo-list-header',
   templateUrl: './todo-list-header.component.html',
-  styleUrls: ['./todo-list-header.component.scss']
+  styleUrls: ['./todo-list-header.component.scss'],
 })
-export class TodoListHeaderComponent implements OnInit {
-  value = '123';
+export class TodoListHeaderComponent implements OnInit, AfterViewInit {
+  value = '';
 
-  constructor() { }
+  @ViewChild('thisInput') thisInput!: ElementRef;
+  @Output() addTodoEvent = new EventEmitter<string>();
 
-  ngOnInit(): void {
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  ngAfterViewInit() {
+    this.thisInput.nativeElement.focus();
   }
 
+  addTodo() {
+    this.addTodoEvent.emit(this.value);
+    this.value = '';
+  }
 }

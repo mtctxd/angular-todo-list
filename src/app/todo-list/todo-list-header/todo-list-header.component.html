@@ -1,5 +1,9 @@
 <div>
-  {{ value }}
   <button>Hide</button>
-  <input type="text" [(ngModel)]="value">
+  <input type="text"
+    [(ngModel)]="value"
+    (keydown.enter)="addTodo()"
+    placeholder="Enter your task"
+    #thisInput
+    >
 </div>

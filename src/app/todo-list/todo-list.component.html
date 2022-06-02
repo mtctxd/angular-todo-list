@@ -1,2 +1,3 @@
-<app-todo-list-header></app-todo-list-header>
-<app-todo-list-main [todos]="todos"></app-todo-list-main>
+<app-todo-list-header (addTodoEvent)="addTodo($event)"></app-todo-list-header>
+<app-todo-list-main [todos]="todos"
+  (deleteTodoEvent)="deleteTodo($event)" (changeStatusEvent)="changeStatus($event)"></app-todo-list-main>

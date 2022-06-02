@@ -12,7 +12,7 @@ export class TodoListComponent implements OnInit {
       userId: 1,
       id: 1,
       title: 'delectus aut autem',
-      completed: false,
+      completed: true,
     },
     {
       userId: 1,
@@ -37,4 +37,32 @@ export class TodoListComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  addTodo(event: string) {
+    const newTodo: Todo = {
+      id: Math.random(),
+      userId: 1,
+      title: event,
+      completed: false,
+    }
+
+    this.todos.push(newTodo);
+  }
+
+  deleteTodo(id: number) {
+    this.todos = this.todos.filter((todo) => todo.id !== id);
+  }
+
+  changeStatus(id: number) {
+    this.todos = this.todos.map(todo => {
+      if (todo.id === id) {
+        return {
+          ...todo,
+          completed: !todo.completed,
+        }
+      }
+
+      return todo;
+    })
+  }
 }
