@@ -5,7 +5,7 @@ import { TodoListHeaderComponent } from './todo-list-header/todo-list-header.com
 import { TodoListMainComponent } from './todo-list-main/todo-list-main.component';
 import { FormsModule } from '@angular/forms';
 import { TodoListFooterComponent } from './todo-list-footer/todo-list-footer.component';
-import { TodoListService } from '../services/todo-list/todo-list.service';
+import { TodoListService } from './todo-list/todo-list.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({

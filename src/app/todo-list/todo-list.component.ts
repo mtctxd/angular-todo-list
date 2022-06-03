@@ -5,7 +5,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { TodoListService } from '../services/todo-list/todo-list.service';
+import { TodoListService } from './todo-list/todo-list.service';
 import { Filter } from '../types/enums';
 import { Todo } from '../types/interfaces';
 
