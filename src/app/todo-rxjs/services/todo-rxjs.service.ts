@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, filter, map } from 'rxjs';
+import { BehaviorSubject, filter, map, Observable, reduce } from 'rxjs';
 import { Filter } from 'src/app/types/enums';
 import { Todo } from 'src/app/types/interfaces';
 
@@ -37,7 +37,24 @@ export class TodoRxjsService {
 
   constructor() {}
 
-  deleteTodo(id: number) {}
+  deleteTodo(id: number) {
+    this.todos$.next(this.todos$.getValue().filter((todo) => todo.id !== id));
+  }
+
+  toggleStatus(id: number) {
+    this.todos$.next(
+      this.todos$.getValue().map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            completed: !todo.completed,
+          };
+        }
+
+        return todo;
+      })
+    );
+  }
 
   addTodo(text: string) {
     if (text.length > 0) {
@@ -55,5 +72,18 @@ export class TodoRxjsService {
 
   changeFilter(type: Filter) {
     this.filter$.next(type);
+  }
+
+  toggleAll(status: boolean) {
+    this.todos$.next(
+      this.todos$.getValue().map((todo) => ({
+        ...todo,
+        completed: status,
+      }))
+    );
+  }
+
+  get sompletedCount() {
+    return this.todos$.getValue().filter(todo => todo.completed);
   }
 }

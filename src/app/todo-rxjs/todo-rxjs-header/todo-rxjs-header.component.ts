@@ -22,4 +22,9 @@ export class TodoRxjsHeaderComponent implements OnInit {
     this.todoService.addTodo(this.text);
     this.text = '';
   }
+
+  toggleAll(event: Event) {
+    const { checked } = event.target as HTMLInputElement;
+    this.todoService.toggleAll(checked);
+  }
 }

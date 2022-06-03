@@ -1,5 +1,10 @@
 <div>
-  <button (click)="changeFilter(filterTypes.All)">all</button>
+  <span>
+    completed {{ completed$ | async }}
+  </span>
+  <div>
+    <button (click)="changeFilter(filterTypes.All)">all</button>
   <button (click)="changeFilter(filterTypes.Active)">active</button>
   <button (click)="changeFilter(filterTypes.Completed)">completed</button>
+  </div>
 </div>
