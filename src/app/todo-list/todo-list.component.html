@@ -1,11 +1,17 @@
-<app-todo-list-header [completedStatus]="completedStatus"
+<app-todo-list-header
+  [completedStatus]="completedStatus"
   (addTodoEvent)="addTodo($event)"
   (toggleAllEvent)="toggleAll()"
-  (fetchTodosEvent)="fetchTodos()"></app-todo-list-header>
-<app-todo-list-main [todos]="todos"
+  (fetchTodosEvent)="fetchTodos()"
+  ></app-todo-list-header>
+<app-todo-list-main
+  [todos]="todos"
   [filterType]="filterType"
   (deleteTodoEvent)="deleteTodo($event)"
-  (changeStatusEvent)="changeStatus($event)"></app-todo-list-main>
-<app-todo-list-footer (changeFilterEvent)="changeFilterType($event)"
+  (changeStatusEvent)="changeStatus($event)"
+  ></app-todo-list-main>
+<app-todo-list-footer
+  (changeFilterEvent)="changeFilterType($event)"
   [todos]="todos"
-  (clearAllEvent)="clearAll()"></app-todo-list-footer>
+  (clearAllEvent)="clearAll()"
+></app-todo-list-footer>
