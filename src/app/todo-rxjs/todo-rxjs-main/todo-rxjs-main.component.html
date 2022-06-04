@@ -1,9 +1,21 @@
 <ul>
   <li *ngFor="let todo of visibleTodos$ | async">
-    <input type="checkbox" name="" id="" [checked]="todo.completed" (change)="toogleStatus(todo.id)">
-    {{ todo.title }}
-    <button
-      (click)="deleteTodo(todo.id)"
-    >X</button>
+    <input type="checkbox"
+      name=""
+      id=""
+      [checked]="todo.completed"
+      (change)="toogleStatus(todo.id)">
+    <ng-container *ngIf="todo.id === (selectedTodoId$ | async) ; then inputTodo else textTodo"></ng-container>
+    <ng-template #inputTodo>
+      <input type="text"
+        (blur)="changeText($event)"
+        [value]="todo.title">
+    </ng-template>
+    <ng-template #textTodo>
+      <span (click)="setSelectedTodo(todo.id)">
+        {{ todo.title }}
+      </span>
+    </ng-template>
+    <button (click)="deleteTodo(todo.id)">X</button>
   </li>
 </ul>

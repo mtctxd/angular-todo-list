@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, filter, map, Observable, reduce } from 'rxjs';
+import { BehaviorSubject, combineLatest, filter, map, Observable, reduce } from 'rxjs';
 import { Filter } from 'src/app/types/enums';
 import { Todo } from 'src/app/types/interfaces';
 
@@ -34,6 +34,7 @@ export class TodoRxjsService {
     },
   ]);
   filter$ = new BehaviorSubject<Filter>(Filter.All);
+  selectedTodoId$ = new BehaviorSubject<number>(0);
 
   constructor() {}
 
@@ -81,6 +82,14 @@ export class TodoRxjsService {
         completed: status,
       }))
     );
+  }
+
+  setSelectedTodo(id: number) {
+    this.selectedTodoId$.next(id);
+  }
+
+  changeText(text: string) {
+
   }
 
   get sompletedCount() {
